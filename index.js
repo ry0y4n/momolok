@@ -47,7 +47,8 @@ app.get("/vibrate", function(req, result){
 		"request": req
 	});
 	console.log("Vibrated!");
-	result.sendFile(__dirname + "/public/main.html");
+	result.json({ message: 'beeped' })
+	// result.sendFile(__dirname + "/public/main.html");
 });
 app.get("/beep", function(req, result){
 	pavlok.beep({
