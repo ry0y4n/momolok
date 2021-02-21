@@ -4,7 +4,7 @@ const express = require('express')
 const app = express();
 
 app.set('port', process.env.PORT || 3000);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + '/public'));
 
 pavlok.init(
     "f421bc3ab16596d574b334578d379c98e500db565eccdbd7adbe0e20f32a14ea",
