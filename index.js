@@ -2,7 +2,9 @@ const pavlok = require('pavlok');
 const express = require('express')
 
 const app = express();
-const port = process.env.PORT || '3000'
+
+app.set('port', process.env.PORT || 3000);
+app.use(express.static(path.join(__dirname, 'public')));
 
 pavlok.init(
     "f421bc3ab16596d574b334578d379c98e500db565eccdbd7adbe0e20f32a14ea",
@@ -65,12 +67,11 @@ app.get("/logout", function(req, result){
 	result.redirect("/");	
 });
 
-app.listen(port, (err) => {
+app.listen(app.get('port'), (err) => {
     if (err) {
         console.log("Failed to start the server");
         console.log(err)
     } else {
-        console.log(port)
         console.log("Visit the IP address of this machine, or http://localhost:3000/.");
     }
 });
