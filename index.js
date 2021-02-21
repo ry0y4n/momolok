@@ -13,22 +13,24 @@ pavlok.init(
         "verbose": true,
         "app" : app,
         "message": "Hello from the Pavlok Remote example!",
-        "callbackUrl": "http://localhost/auth/pavlok/result",
+        "callbackUrl": (process.env.SERVER_URL || 'http://localhost') + "/auth/pavlok/result",
         "callbackUrlPath": "/auth/pavlok/result",
-        "successUrl": "/api/v1/auth/success",
-        "errorUrl": "/api/v1/auth/error"
+        "successUrl": "/",
+        "errorUrl": "/error",
+		"handleSessions": true
     }
 );
 
 app.get("/", function(req, result){
 	if(pavlok.isLoggedIn(req)){
-		result.sendFile(__dirname + "/main.html");
+		result.sendFile(__dirname + "/public/main.html");
 	} else {
    		result.redirect("login.html");
 	}
 });
-app.get("/api/v1/auth/login", function(req, result){
+app.get("/auth", function(req, result){
 	pavlok.auth(req, result);
+	console.log('x')
 });
 
 app.get("/zap", function(req, result){
@@ -36,21 +38,21 @@ app.get("/zap", function(req, result){
 		"request": req
 	});
 	console.log("Zapped!");
-	result.sendFile(__dirname + "/main.html");
+	result.sendFile(__dirname + "/public/main.html");
 });
 app.get("/vibrate", function(req, result){
 	pavlok.vibrate({
 		"request": req
 	});
 	console.log("Vibrated!");
-	result.sendFile(__dirname + "/main.html");
+	result.sendFile(__dirname + "/public/main.html");
 });
 app.get("/beep", function(req, result){
 	pavlok.beep({
 		"request": req
 	});
 	console.log("Beeped!");
-	result.sendFile(__dirname + "/main.html");
+	result.sendFile(__dirname + "/public/main.html");
 });
 
 app.get("/pattern", function(req, result){
@@ -60,7 +62,7 @@ app.get("/pattern", function(req, result){
 		"count": 2
 	});
 	console.log("Pattern'd!");
-	result.sendFile(__dirname + "/main.html");
+	result.sendFile(__dirname + "/public/main.html");
 });
 app.get("/logout", function(req, result){
 	pavlok.logout(req);
