@@ -47,7 +47,7 @@ app.get("/vibrate", function(req, result){
 		"request": req
 	});
 	console.log("Vibrated!");
-	result.json({ message: 'beeped' })
+	result.json({ message: 'vibrated' })
 	// result.sendFile(__dirname + "/public/main.html");
 });
 app.get("/beep", function(req, result){

@@ -1,0 +1,10 @@
+POST http://pavlok-mvp.herokuapp.com/api/v1/stimuli/vibration/127
+Content-Type: application/json
+
+{
+    "qs": {
+        "access_token": null,
+        "reason": "string",
+        "time": "2021-02-21T18:57:15.773Z"
+    }
+}

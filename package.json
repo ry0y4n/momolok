@@ -5,6 +5,6 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
-    "pavlok": "^0.2.2"
+    "pavlok": "git+https://github.com/ry0y4n/Pavlok_Node_Module.git"
   }
 }
