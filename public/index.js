@@ -2,6 +2,7 @@ const pavlok = require('pavlok');
 const express = require('express')
 
 const app = express();
+const port = process.env.PORT || '3000'
 
 pavlok.init(
     "f421bc3ab16596d574b334578d379c98e500db565eccdbd7adbe0e20f32a14ea",
@@ -10,7 +11,7 @@ pavlok.init(
         "verbose": true,
         "app" : app,
         "message": "Hello from the Pavlok Remote example!",
-        "callbackUrl": "http://localhost:3000/auth/pavlok/result",
+        "callbackUrl": "http://localhost/auth/pavlok/result",
         "callbackUrlPath": "/auth/pavlok/result",
         "successUrl": "/api/v1/auth/success",
         "errorUrl": "/api/v1/auth/error"
@@ -64,11 +65,12 @@ app.get("/logout", function(req, result){
 	result.redirect("/");	
 });
 
-app.listen(3000, (err) => {
+app.listen(port, (err) => {
     if (err) {
         console.log("Failed to start the server");
         console.log(err)
     } else {
+        console.log(port)
         console.log("Visit the IP address of this machine, or http://localhost:3000/.");
     }
 });
