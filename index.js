@@ -7,13 +7,15 @@ app.set('port', process.env.PORT || 3000);
 app.use(express.static(__dirname + '/public'));
 
 pavlok.init(
-    "f421bc3ab16596d574b334578d379c98e500db565eccdbd7adbe0e20f32a14ea",
-    "f3fe1e1a2f78f46dd345d4d63110347e5fb2e8d12624ed555cdb6e3e81d25fd5",
+    // "f421bc3ab16596d574b334578d379c98e500db565eccdbd7adbe0e20f32a14ea",
+    // "f3fe1e1a2f78f46dd345d4d63110347e5fb2e8d12624ed555cdb6e3e81d25fd5",
+	"c9a0e75aaa2ffceaf44507d8698a33c88bf20731b03ab88c17bbf1308461acac",
+    "7c6d95945bac38ac0ad9f77c8c08772a7eb3c3a1c98bcd256913b147f5620f94",
     {
         "verbose": true,
         "app" : app,
         "message": "Hello from the Pavlok Remote example!",
-        "callbackUrl": (process.env.SERVER_URL || 'https://cryptic-river-07464.herokuapp.com') + "/auth/pavlok/result",
+        "callbackUrl": (process.env.SERVER_URL || 'https://cryptic-river-07464.herokuapp.com' + '/auth/pavlok/result'),
         "callbackUrlPath": "/auth/pavlok/result",
         "successUrl": "/",
         "errorUrl": "/error",
