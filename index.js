@@ -13,7 +13,7 @@ pavlok.init(
         "verbose": true,
         "app" : app,
         "message": "Hello from the Pavlok Remote example!",
-        "callbackUrl": (process.env.SERVER_URL || 'https://cryptic-river-07464.herokuapp.com/') + "/auth/pavlok/result",
+        "callbackUrl": (process.env.SERVER_URL || 'https://cryptic-river-07464.herokuapp.com') + "/auth/pavlok/result",
         "callbackUrlPath": "/auth/pavlok/result",
         "successUrl": "/",
         "errorUrl": "/error",
