@@ -8,8 +8,8 @@ import time
 base_url = "http://pavlok-mvp.herokuapp.com/api/v1/stimuli/"
 
 # route: vibration or shock or beep
-def postPavlok(route): 
-    url = base_url + route + '/127'
+def postPavlok(route, strength): 
+    url = base_url + route + '/' + str(strength)
     r = requests.post(
         url,
         {
@@ -19,10 +19,10 @@ def postPavlok(route):
         }
     )
 
-
 if __name__=='__main__':
     for i in range(300):
         print(i)
         if i == 70 or i == 150 or i == 230:
-            postPavlok("shock")
+            postPavlok("shock", 127)
         time.sleep(1)
+    postPavlok("beep", 127)
